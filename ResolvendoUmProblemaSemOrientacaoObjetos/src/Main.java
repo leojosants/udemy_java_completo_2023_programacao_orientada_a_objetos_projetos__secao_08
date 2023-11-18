@@ -12,20 +12,20 @@ public class Main {
 		System.out.println("\nInforme a medida dos lados de dois triângulos X e Y\n");
 
 		System.out.println("Medidas do Triângulo X");
-		double medidaADotriangulo_x = solicitarMedidas(scanner, 'a', 'x');
-		double medidaBDoTriangulo_x = solicitarMedidas(scanner, 'b', 'x');
-		double medidaCDoTriangulo_x = solicitarMedidas(scanner, 'c', 'x');
+		double measureOfSideAOfTheTriangle_x = requestMeasurements(scanner, 'a', 'x');
+		double measureOfSideBOfTheTriangle_x = requestMeasurements(scanner, 'b', 'x');
+		double measureOfSideCOfTheTriangle_x = requestMeasurements(scanner, 'c', 'x');
 
 		System.out.println("\nMedidas do Triângulo Y");
-		double medidaADotriangulo_y = solicitarMedidas(scanner, 'a', 'y');
-		double medidaBDoTriangulo_y = solicitarMedidas(scanner, 'b', 'y');
-		double medidaCDoTriangulo_y = solicitarMedidas(scanner, 'c', 'y');
+		double measureOfSideAOfTheTriangle_y = requestMeasurements(scanner, 'a', 'y');
+		double measureOfSideBOfTheTriangle_y = requestMeasurements(scanner, 'b', 'y');
+		double measureOfSideCOfTheTriangle_y = requestMeasurements(scanner, 'c', 'y');
 
-		double areaDoTriangulo_x = calcularArea(medidaADotriangulo_x, medidaBDoTriangulo_x, medidaCDoTriangulo_x);
-		double areaDoTriangulo_y = calcularArea(medidaADotriangulo_y, medidaBDoTriangulo_y, medidaCDoTriangulo_y);
-		String trianguloComMaiorArea = verificaMiorArea(areaDoTriangulo_x, areaDoTriangulo_y);
+		double areaOfTriangle_x = calculateArea(measureOfSideAOfTheTriangle_x, measureOfSideBOfTheTriangle_x, measureOfSideCOfTheTriangle_x);
+		double areaOfTriangle_y = calculateArea(measureOfSideAOfTheTriangle_y, measureOfSideBOfTheTriangle_y, measureOfSideCOfTheTriangle_y);
+		String triangleWithLargestArea = checkTheLargestArea(areaOfTriangle_x, areaOfTriangle_y);
 
-		exibirDados(areaDoTriangulo_x, areaDoTriangulo_y, trianguloComMaiorArea);
+		displayData(areaOfTriangle_x, areaOfTriangle_y, triangleWithLargestArea);
 
 		scanner.close();
 		System.out.println("\n-> fim do programa");
@@ -34,69 +34,69 @@ public class Main {
 	/*
 	 * functions
 	 */
-	private static double solicitarMedidas(Scanner scanner, char qualMedida, char qualTriangulo) {
-		double medida_a = 0.0;
-		double medida_b = 0.0;
-		double medida_c = 0.0;
+	private static double requestMeasurements(Scanner scanner, char whichMeasure, char whichTriangle) {
+		double measure_a = 0.0;
+		double measure_b = 0.0;
+		double measure_c = 0.0;
 
-		if (qualTriangulo == 'x') {
-			if (qualMedida == 'a') {
+		if (whichTriangle == 'x') {
+			if (whichMeasure == 'a') {
 				System.out.print("Digite a medida do lado A: ");
-				return medida_a = scanner.nextDouble();
+				return measure_a = scanner.nextDouble();
 
-			} else if (qualMedida == 'b') {
+			} else if (whichMeasure == 'b') {
 				System.out.print("Digite a medida do lado B: ");
-				return medida_b = scanner.nextDouble();
+				return measure_b = scanner.nextDouble();
 
-			} else if (qualMedida == 'c') {
+			} else if (whichMeasure == 'c') {
 				System.out.print("Digite a medida do lado C: ");
-				return medida_c = scanner.nextDouble();
+				return measure_c = scanner.nextDouble();
 			}
 
-		} else if (qualTriangulo == 'y') {
-			if (qualMedida == 'a') {
+		} else if (whichTriangle == 'y') {
+			if (whichMeasure == 'a') {
 				System.out.print("Digite a medida do lado A: ");
-				return medida_a = scanner.nextDouble();
+				return measure_a = scanner.nextDouble();
 
-			} else if (qualMedida == 'b') {
+			} else if (whichMeasure == 'b') {
 				System.out.print("Digite a medida do lado B: ");
-				return medida_b = scanner.nextDouble();
+				return measure_b = scanner.nextDouble();
 
-			} else if (qualMedida == 'c') {
+			} else if (whichMeasure == 'c') {
 				System.out.print("Digite a medida do lado C: ");
-				return medida_c = scanner.nextDouble();
+				return measure_c = scanner.nextDouble();
 			}
 		}
 		return 0;
 	}
 
-	private static double calcularArea(double medida_a, double medida_b, double medida_c) {
+	private static double calculateArea(double measure_a, double measure_b, double measure_c) {
 		double area = 0.0;
-		double p = (medida_a + medida_b + medida_c) / 2;
-		area = Math.sqrt((p * (p - medida_a)) * (p - medida_b) * (p - medida_c));
+		double p = (measure_a + measure_b + measure_c) / 2;
+		area = Math.sqrt((p * (p - measure_a)) * (p - measure_b) * (p - measure_c));
 		return area;
 	}
 	
-	private static String verificaMiorArea(double areaDoTriangulo_x, double areaDoTriangulo_y) {
-		double maiorArea = 0.0;
-		String trianguloComMaiorArea = "";
+	private static String checkTheLargestArea(double areaOfTriangle_x, double areaOfTriangle_y) {
+		double largestArea = 0.0;
+		String triangleWithLargestArea = "";
 
-		maiorArea = Math.max(areaDoTriangulo_x, areaDoTriangulo_y);
+		largestArea = Math.max(areaOfTriangle_x, areaOfTriangle_y);
 
-		if (maiorArea == areaDoTriangulo_x) {
-			trianguloComMaiorArea = "X";
+		if (largestArea == areaOfTriangle_x) {
+			triangleWithLargestArea = "X";
 
-		} else if (maiorArea == areaDoTriangulo_y) {
-			trianguloComMaiorArea = "Y";
+		} else if (largestArea == areaOfTriangle_y) {
+			triangleWithLargestArea = "Y";
 		}
 
-		return trianguloComMaiorArea;
+		return triangleWithLargestArea;
 	}
 
-	private static void exibirDados(double areaDoTriangulo_x, double areaDoTriangulo_y, String trianguloComMaiorArea) {
+	private static void displayData(double areaOfTriangle_x, double areaOfTriangle_y, String triangleWithLargestArea) {
 		System.out.println("\nExibindo dados");
-		System.out.printf("Área do triângulo X: %.4f%n", areaDoTriangulo_x);
-		System.out.printf("Área do triângulo Y: %.4f%n", areaDoTriangulo_y);
-		System.out.printf("Triângulo com maior área: %s%n",trianguloComMaiorArea);
+		System.out.printf("Área do triângulo X: %.4f%n", areaOfTriangle_x);
+		System.out.printf("Área do triângulo Y: %.4f%n", areaOfTriangle_y);
+		System.out.printf("Triângulo com maior área: %s%n",triangleWithLargestArea);
 	}
 }
