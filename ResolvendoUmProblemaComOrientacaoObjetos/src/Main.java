@@ -26,8 +26,9 @@ public class Main {
 		triangle_y.side_b = requestMeasurements(scanner, 'b', 'y');
 		triangle_y.side_c = requestMeasurements(scanner, 'c', 'y');
 
-		double areaOfTriangle_x = calculateArea(triangle_x.side_a, triangle_x.side_b, triangle_x.side_c);
-		double areaOfTriangle_y = calculateArea(triangle_y.side_a, triangle_y.side_b, triangle_y.side_c);
+		double areaOfTriangle_x = triangle_x.calculateArea();
+		double areaOfTriangle_y = triangle_y.calculateArea();
+
 		String triangleWithLargestArea = checkTheLargestArea(areaOfTriangle_x, areaOfTriangle_y);
 
 		displayData(areaOfTriangle_x, areaOfTriangle_y, triangleWithLargestArea);
@@ -73,13 +74,6 @@ public class Main {
 			}
 		}
 		return 0;
-	}
-
-	private static double calculateArea(double side_a, double side_b, double side_c) {
-		double area = 0.0;
-		double p = (side_a + side_b + side_c) / 2;
-		area = Math.sqrt((p * (p - side_a)) * (p - side_b) * (p - side_c));
-		return area;
 	}
 
 	private static String checkTheLargestArea(double areaOfTriangle_x, double areaOfTriangle_y) {
