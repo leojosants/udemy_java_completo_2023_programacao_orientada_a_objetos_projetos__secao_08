@@ -22,4 +22,9 @@ public class Product {
 	public void removeProducts(int quantity) {
 		this.quantity -= quantity;
 	}
+
+	public String toString() {
+		return String.format("%s, ", this.name) + String.format("$ %.2f, ", this.price)
+				+ String.format("%d unidades, ", this.quantity) + String.format("$ %.2f%n", this.totalValueInStock());
+	}
 }

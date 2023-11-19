@@ -24,30 +24,21 @@ public class Main {
 		product.quantity = scanner.nextInt();
 
 		System.out.println("\nMostrando dados do Produto");
-		System.out.printf("%s, ", product.name);
-		System.out.printf("$ %.2f, ", product.price);
-		System.out.printf("%d unidades, ", product.quantity);
-		System.out.printf("$ %.2f%n", product.totalValueInStock());
+		System.out.println(product.toString());
 
-		System.out.print("\nEntre com a quantidade de produtos a ser adicionado no estoque: ");
+		System.out.print("Entre com a quantidade de produtos a ser adicionado no estoque: ");
 		int quantityToBeAdded = scanner.nextInt();
 		product.addProducts(quantityToBeAdded);
 
 		System.out.println("\nAtualização de estoque");
-		System.out.printf("%s, ", product.name);
-		System.out.printf("$ %.2f, ", product.price);
-		System.out.printf("%d unidades, ", product.quantity);
-		System.out.printf("$ %.2f%n", product.totalValueInStock());
+		System.out.println(product.toString());
 
-		System.out.print("\nEntre com a quantidade de produtos a ser removido no estoque: ");
+		System.out.print("Entre com a quantidade de produtos a ser removido no estoque: ");
 		int quantityToBeRemoved = scanner.nextInt();
 		product.removeProducts(quantityToBeRemoved);
 
 		System.out.println("\nAtualização de estoque");
-		System.out.printf("%s, ", product.name);
-		System.out.printf("$ %.2f, ", product.price);
-		System.out.printf("%d unidades, ", product.quantity);
-		System.out.printf("$ %.2f%n", product.totalValueInStock());
+		System.out.println(product.toString());
 
 		scanner.close();
 		System.out.println("\n-> fim do programa");
