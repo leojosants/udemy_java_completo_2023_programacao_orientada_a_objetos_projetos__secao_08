@@ -41,7 +41,7 @@ public class Main {
 		System.out.println(product.toString());
 
 		scanner.close();
-		System.out.println("\n-> fim do programa");
+		System.out.println("-> fim do programa");
 	}
 
 }
