@@ -3,27 +3,26 @@ package application;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Program {
+import util.Calculator;
 
-	public static double PI = 3.14159;
+public class Program {
 
 	public static void main(String[] args) {
 
 		Locale.setDefault(Locale.US);
 
 		Scanner scanner = new Scanner(System.in);
+		Calculator calculator = new Calculator();
 
 		double radius = 0.0;
 		double circunference = 0.0;
 		double volume = 0.0;
 
-		System.out.print("\nInforme o valor do raio: ");
-		radius = scanner.nextDouble();
+		radius = requestRadius(scanner);
+		circunference = calculator.calculateCircunference(radius);
+		volume = calculator.calculateVolume(radius);
 
-		circunference = calculateCircunference(radius);
-		volume = calculateVolume(radius);
-
-		displayData(circunference, volume);
+		displayData(circunference, volume, calculator);
 
 		scanner.close();
 
@@ -33,21 +32,25 @@ public class Program {
 	/*
 	 * functions
 	 */
-	private static double calculateCircunference(double radius) {
-		double circunference = 0.0;
-		circunference = 2.0 * PI * radius;
-		return circunference;
+	private static double requestRadius(Scanner scanner) {
+		double radius = 0.0;
+
+		do {
+			System.out.print("\nInforme o valor do raio: ");
+			radius = scanner.nextDouble();
+
+			while (radius <= 0) {
+				System.out.print("-> campo 'valor do raio' não pode ser menor ou igual a 0: ");
+				radius = scanner.nextDouble();
+			}
+		} while (radius <= 0);
+
+		return radius;
 	}
 
-	private static double calculateVolume(double radius) {
-		double volume = 0.0;
-		volume = (4.0 * PI * Math.pow(radius, 3)) / 3.0;
-		return volume;
-	}
-
-	private static void displayData(double circunference, double volume) {
+	private static void displayData(double circunference, double volume, Calculator calculator) {
 		System.out.printf("\nCircunferência:   %.2f%n", circunference);
 		System.out.printf("Volume:           %.2f%n", volume);
-		System.out.printf("PI:               %.2f%n", PI);
+		System.out.printf("PI:               %.2f%n", calculator.PI);
 	}
 }
